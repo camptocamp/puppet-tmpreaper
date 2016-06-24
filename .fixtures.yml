@@ -1,0 +1,8 @@
+fixtures:
+  forge_modules:
+    augeas: 'camptocamp-augeas'
+    augeasproviders_core: 'herculesteam-augeasproviders_core'
+    augeasproviders_shellvar: 'herculesteam-augeasproviders_shellvar'
+    stdlib: 'puppetlabs-stdlib'
+  symlinks:
+    tmpreaper: "#{source_dir}"
