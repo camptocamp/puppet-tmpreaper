@@ -1,3 +1,4 @@
+# Internal class only, please check init.pp
 class tmpreaper::params {
   $enabled = true
   

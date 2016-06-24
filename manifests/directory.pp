@@ -1,3 +1,12 @@
+# Definition: tmpreaper::directory
+#       Create or remove a cronjob for a specific directory
+# Parameters:
+#       directory: mandatory - absolute path to directory
+#       rtag: mandatory  - process tag for syslog
+#       age: optional    - set max age for files in directory
+#       hour: optional   - set cron hour
+#       minute: optional - set cron minute
+#       user: optional   - set cron user
 define tmpreaper::directory(
   $directory,
   $rtag,
