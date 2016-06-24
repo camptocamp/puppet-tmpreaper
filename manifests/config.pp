@@ -8,7 +8,7 @@ class tmpreaper::config {
   }
   # lint:endignore
 
-  if $::os['family'] == 'Debian' {
+  if $::osfamily == 'Debian' {
     shellvar {'SHOWWARNING':
       ensure => present,
       target => '/etc/tmpreaper.conf',

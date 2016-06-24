@@ -2,7 +2,7 @@
 class tmpreaper::params {
   $enabled = true
   
-  case $::os['family'] {
+  case $::osfamily {
     'Debian': {
       $package = 'tmpreaper'
       $cmd = 'tmpreaper'
