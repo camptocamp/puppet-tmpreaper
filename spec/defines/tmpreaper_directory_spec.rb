@@ -33,7 +33,7 @@ describe 'tmpreaper::directory' do
 
         it 'should fail' do
           expect { should contain_tmpreaper__directory('unit test directory')
-          }.to raise_error(Puppet::Error, /expects a value for parameter 'directory'/)
+          }.to raise_error(Puppet::Error, /(expects a value for parameter 'directory')|(Must pass directory to)/)
         end
       end
 
@@ -58,7 +58,7 @@ describe 'tmpreaper::directory' do
 
         it 'should fail' do
           expect { should contain_tmpreaper__directory('unit test directory')
-          }.to raise_error(Puppet::Error, /expects a value for parameter 'rtag'/)
+          }.to raise_error(Puppet::Error, /(expects a value for parameter 'rtag')|(Must pass rtag to)/)
         end
       end
 
