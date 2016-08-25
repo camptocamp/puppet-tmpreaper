@@ -9,7 +9,6 @@ describe 'tmpreaper::directory' do
     context "on #{os}" do
       let(:facts) do
         facts.merge({
-          :concat_basedir => '/var/lib/puppet/concat',
         })
       end
 
