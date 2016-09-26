@@ -71,13 +71,15 @@ describe 'tmpreaper::directory' do
         
         if facts[:osfamily] == 'Debian'
           cmd = 'tmpreaper'
+          verbosity_option = '--showdeleted'
         else
           cmd = 'tmpwatch'
+          verbosity_option = '-v'
         end
 
         it { should contain_cron('tmpreaper for /tmp on root').with({
           :ensure  => 'present',
-          :command => "#{cmd} --showdeleted --mtime 1w /tmp 2>&1 | logger -t tmpreaper-tmp",
+          :command => "#{cmd} #{verbosity_option} --mtime 1w /tmp 2>&1 | logger -t tmpreaper-tmp",
           :user    => 'root',
         })}
       end

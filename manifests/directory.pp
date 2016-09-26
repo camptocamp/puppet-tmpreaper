@@ -27,7 +27,7 @@ define tmpreaper::directory(
 
   cron {"tmpreaper for ${directory} on ${user}":
     ensure  => $ensure,
-    command => "${::tmpreaper::params::cmd} --showdeleted --mtime ${age} ${directory} 2>&1 | logger -t tmpreaper-${rtag}",
+    command => "${::tmpreaper::params::cmd} ${::tmpreaper::params::verbose_option} --mtime ${age} ${directory} 2>&1 | logger -t tmpreaper-${rtag}",
     hour    => $hour,
     minute  => $minute,
     require => Anchor['tmpreaper::end'],

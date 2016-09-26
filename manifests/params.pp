@@ -6,11 +6,13 @@ class tmpreaper::params {
     'Debian': {
       $package = 'tmpreaper'
       $cmd = 'tmpreaper'
+      $verbose_option = '--showdeleted'
     }
 
     'RedHat': {
       $package = 'tmpwatch'
       $cmd = 'tmpwatch'
+      $verbose_option = '-v'
     }
 
     default: {
