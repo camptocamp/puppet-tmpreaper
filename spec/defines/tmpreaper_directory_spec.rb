@@ -79,9 +79,39 @@ describe 'tmpreaper::directory' do
 
         it { should contain_cron('tmpreaper for /tmp on root').with({
           :ensure  => 'present',
-          :command => "#{cmd} #{verbosity_option} --mtime 1w /tmp 2>&1 | logger -t tmpreaper-tmp",
+          :command => "#{cmd} #{verbosity_option}  --mtime 1w /tmp 2>&1 | logger -t tmpreaper-tmp",
           :user    => 'root',
         })}
+      end
+
+      context 'with single exclude as string' do
+        let(:params) {{
+          :ensure    => 'present',
+          :directory => '/tmp',
+          :rtag      => 'tmp',
+          :exclude   => '/tmp/foo',
+        }}
+
+        if facts[:osfamily] == 'Debian'
+          it { should contain_cron('tmpreaper for /tmp on root').with_command(/--protect '\/tmp\/foo'/) }
+        else
+          it { should contain_cron('tmpreaper for /tmp on root').with_command(/--exclude-pattern '\/tmp\/foo'/) }
+        end
+      end
+
+      context 'with multiple excludes' do
+        let(:params) {{
+          :ensure    => 'present',
+          :directory => '/tmp',
+          :rtag      => 'tmp',
+          :exclude   => ['/tmp/foo', '/tmp/bar'],
+        }}
+
+        if facts[:osfamily] == 'Debian'
+          it { should contain_cron('tmpreaper for /tmp on root').with_command(/ --protect '\/tmp\/foo' --protect '\/tmp\/bar' /) }
+        else
+          it { should contain_cron('tmpreaper for /tmp on root').with_command(/ --exclude-pattern '\/tmp\/foo' --exclude-pattern '\/tmp\/bar' /) }
+        end
       end
 
     end
