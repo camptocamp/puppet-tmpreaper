@@ -7,12 +7,14 @@ class tmpreaper::params {
       $package = 'tmpreaper'
       $cmd = 'tmpreaper'
       $verbose_option = '--showdeleted'
+      $exclude_option = '--protect'
     }
 
     'RedHat': {
       $package = 'tmpwatch'
       $cmd = 'tmpwatch'
       $verbose_option = '-v'
+      $exclude_option = '--exclude-pattern'
     }
 
     default: {
