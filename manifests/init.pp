@@ -13,11 +13,11 @@ class tmpreaper (
   validate_bool($enabled)
   validate_string($package)
 
-  anchor {'tmpreaper::begin': } ->
-  class {[
+  anchor {'tmpreaper::begin': }
+  -> class {[
     '::tmpreaper::install',
     '::tmpreaper::config',
   ]:
-  } ->
-  anchor {'tmpreaper::end': }
+  }
+  -> anchor {'tmpreaper::end': }
 }
